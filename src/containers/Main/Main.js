@@ -12,35 +12,48 @@ const API_KEY = 'dc8cbaf181f71f13872bb49e9a0bbe12';
 
 class Main extends Component {
     state = {
-        recipes: []
+        recipes: [],
+        loaded: true
     }
 
-    onSubmitHandler = (event) => {
+    // componentDidMount (){
+    //     let url = `https://cors-anywhere.herokuapp.com/http://food2fork.com/api/search?key=${API_KEY}&q=chicken&count=10`;
+    //     fetch(url)
+    //         .then(resp => {
+    //             if(resp.ok) {
+    //                 return resp.json()
+    //             } else {
+    //                 throw new Error("There is a connection error")
+    //             }
+                
+    //         })
+    //         .then(resp => {
+    //             this.setState({recipes: resp.recipes, loaded: true})
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
+    onSubmitHandler = (event) => {
+        this.setState({loaded: false});
         event.preventDefault();
        let recipeName = event.target.elements.recipeName.value;
 
         let url = `https://cors-anywhere.herokuapp.com/http://food2fork.com/api/search?key=${API_KEY}&q=${recipeName}&count=10`;
         fetch(url)
-            .then(resp => resp.json())
             .then(resp => {
-                this.setState({recipes: resp.recipes})
+                if(resp.ok) {
+                    return resp.json()
+                } else {
+                    throw new Error("There is a connection error")
+                }
+                
+            })
+            .then(resp => {
+                this.setState({recipes: resp.recipes, loaded: true})
             })
             .catch(err => console.log(err))
     }
 
-    //   onSubmitHandler =  async event => {
-
-    //     event.preventDefault();
-    //    let recipeName = event.target.elements.recipeName.value;
-
-    //     let url = `https://cors-anywhere.herokuapp.com/http://food2fork.com/api/search?key=${API_KEY}&q=${recipeName}&count=10`;
-    //     const apiCall = await fetch(url);
-    //     const data = await apiCall.json()
-    //     this.setState({
-    //         recipes: data.recipes
-    //     })
-    // }
 
 
     render() {
@@ -48,7 +61,7 @@ class Main extends Component {
         
             <div>
                 <Form submitSearch = {this.onSubmitHandler}/>
-                <Recipes recipes={this.state.recipes}/>
+                {this.state.loaded ? <Recipes recipes={this.state.recipes}/> : <p>Loading...</p>}
             </div>
     
         );

@@ -6,7 +6,7 @@ const RecipeDetails = (props) => {
     return (
         <div>
        
-        one recipe
+        one recipe deatils
         </div>
     )
 
