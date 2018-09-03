@@ -26,7 +26,21 @@ class Main extends Component {
             .then(resp => {
                 this.setState({recipes: resp.recipes})
             })
+            .catch(err => console.log(err))
     }
+
+    //   onSubmitHandler =  async event => {
+
+    //     event.preventDefault();
+    //    let recipeName = event.target.elements.recipeName.value;
+
+    //     let url = `https://cors-anywhere.herokuapp.com/http://food2fork.com/api/search?key=${API_KEY}&q=${recipeName}&count=10`;
+    //     const apiCall = await fetch(url);
+    //     const data = await apiCall.json()
+    //     this.setState({
+    //         recipes: data.recipes
+    //     })
+    // }
 
 
     render() {

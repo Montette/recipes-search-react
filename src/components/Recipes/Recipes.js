@@ -1,12 +1,28 @@
-import React from 'react'
+import React from 'react';
+import Recipe from '../Recipe/Recipe';
+
+import styled from 'styled-components';
+
+const RecipesContainer = styled.div`
+    padding: 0 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    background-color: lightgrey;
+`
+
+
+
 
 const Recipes = (props) => {
 
     let recipes = props.recipes.map(recipe => {
-        return <li key={recipe.recipe_id}>{recipe.title}</li>
+        return <Recipe key={recipe.recipe_id} title={recipe.title} image={recipe.image_url} publisher={recipe.publisher}/>
     })
     return (
-        <ul>{recipes}</ul>
+        <RecipesContainer>  
+        {recipes}  
+        </RecipesContainer>
     )
 
 }
