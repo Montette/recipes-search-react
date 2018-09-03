@@ -8,7 +8,7 @@ const RecipesContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center; 
-    background-color: lightgrey;
+    
 `
 
 
