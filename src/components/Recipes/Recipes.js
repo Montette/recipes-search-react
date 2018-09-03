@@ -1,9 +1,12 @@
 import React from 'react'
 
-const Recipes = () => {
+const Recipes = (props) => {
 
+    let recipes = props.recipes.map(recipe => {
+        return <li key={recipe.recipe_id}>{recipe.title}</li>
+    })
     return (
-        <div>Recipes</div>
+        <ul>{recipes}</ul>
     )
 
 }
