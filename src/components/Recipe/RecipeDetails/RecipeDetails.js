@@ -32,21 +32,36 @@ class RecipeDetails extends React.Component {
 
     }
     render (){
+   let recipe = this.state.recipe ? this.state.recipe.recipes[0]: '';
+   console.log(recipe);
    
+  
     return (
-        <RecipeBox>
-            
+        <React.Fragment>
+
+        {
+            this.state.recipe
+            ? (  
+         <RecipeBox> 
+           
+           
             <div>
-                <Image src={this.state.recipe.source_url}/>
+                <Image src={recipe.image_url}/>
             </div>
             <TextContainer>
-                <Title>{this.state.title}</Title>
-                <Text><Span>Publisher: </Span>{this.state.recipe.publisher}</Text>
+                <Title>{recipe.title}</Title>
+                <Text><Span>Publisher: </Span>{recipe.publisher}</Text>
             <Button>View recipe</Button> 
-            </TextContainer>
-    
+             </TextContainer> 
+            
     </RecipeBox>
+): null
+
+}
+</React.Fragment>
+
     )
+
 
     }
 
