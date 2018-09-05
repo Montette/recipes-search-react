@@ -55,7 +55,8 @@ import {RecipeBox, Button, PhotoContainer, TextContainer, Title, Image, Text, Sp
 
 const Recipe = (props) => {
     // console.log(props.match);
-    // console.log(match)
+    // console.log(match);
+    console.log(props);
     return (
         <RecipeBox>
             
@@ -67,9 +68,11 @@ const Recipe = (props) => {
                 <Text><Span>Publisher: </Span>{props.publisher}</Text>
                <Link to ={{
                    pathname: `/recipe/${props.id}`,
-                   state: {title: props.title }
+                   state: {title: props.title },
+                   data: props
                  
                }}> <Button primary>View recipe</Button> </Link>
+               {/* <Button primary onClick={props.favouriteAdd}>Add to favourities</Button> */}
             </TextContainer>
         
         </RecipeBox>

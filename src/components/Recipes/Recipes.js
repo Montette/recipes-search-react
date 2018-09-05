@@ -18,7 +18,7 @@ const Recipes = (props) => {
 
     let recipes = props.recipes.map(recipe => {
       
-        return <Recipe key={recipe.recipe_id} id={recipe.recipe_id} title={recipe.title} image={recipe.image_url} publisher={recipe.publisher}/>
+        return <Recipe key={recipe.recipe_id} id={recipe.recipe_id} title={recipe.title} image={recipe.image_url} publisher={recipe.publisher} />
     })
 
     
