@@ -1,7 +1,29 @@
 import React from 'react'
-import {RecipeBox, Button, PhotoContainer, TextContainer, Title, Image, Text, Span} from '../RecipeStyle'
-
+import { Button, PhotoContainer, TextContainer, Title, Text, Span} from '../RecipeStyle'
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 const API_KEY = 'dc8cbaf181f71f13872bb49e9a0bbe12';
+
+ const RecipeBox = styled.div`
+    
+    margin: 50px auto; 
+    width: 100%;
+    max-width: 900px;
+    background-color: lightgrey;
+ `
+
+ const Image = styled.img`
+    width: 100%;
+    max-width: 900px;
+    height: auto; 
+`
+const A = styled.a`
+    color: #c12020;;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+`
 
 class RecipeDetails extends React.Component {
     state = {
@@ -51,7 +73,8 @@ class RecipeDetails extends React.Component {
             <TextContainer>
                 <Title>{recipe.title}</Title>
                 <Text><Span>Publisher: </Span>{recipe.publisher}</Text>
-            <Button>View recipe</Button> 
+                <A href={recipe.source_url} target='blank'>See recipe on the original website</A>
+            <Link to='/'><Button>Back</Button> </Link>
              </TextContainer> 
             
     </RecipeBox>

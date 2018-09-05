@@ -11,9 +11,9 @@ export const RecipeBox = styled.div`
 // `
 
 export const TextContainer = styled.div`
-    background: white;
     transform: translateY(-3px);
     padding: 30px 20px;
+    background-color: ${props=> props.primary ? 'white': 'lightgrey'}
 `
 export const Image = styled.img`
     width: 100%;
@@ -21,7 +21,7 @@ export const Image = styled.img`
 `
 
 export const Title = styled.h2`
-    color: #a51d1d;
+    color: ${props=> props.primary ? '#a51d1d': 'black'};
     text-transform: uppercase;
     font-size: 20px;
     margin-bottom: 15px; 
@@ -36,8 +36,9 @@ export const Span= styled.span`
 `
 
 export const Button = styled.button `
-    background: white;
+    background: ${props=> props.primary ? 'white': 'lightgrey'};
     border: 2px solid #c12020;
+    font-weight: bold;
     padding: 10px 15px;
     text-transform: uppercase;
     color: #c12020;
@@ -46,5 +47,6 @@ export const Button = styled.button `
     &:hover {
         color: white;
         background: #a51d1d;
+        cursor: pointer;
       }
 `

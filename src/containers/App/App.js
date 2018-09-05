@@ -11,13 +11,27 @@ import Recipe from '../../components/Recipe/Recipe';
 
 import Form from '../../components/Form/Form';
 
-const API_KEY = 'dc8cbaf181f71f13872bb49e9a0bbe12';
+// const API_KEY = 'dc8cbaf181f71f13872bb49e9a0bbe12';
+
+const API_KEY = 'e496f8d598986d899ba1fda969e6135b';
 
 class App extends Component {
 
   state = {
     recipes: [],
     loaded: true
+  }
+
+  componentDidUpdate () {
+    localStorage.setItem('recipes', JSON.stringify(this.state.recipes))
+  }
+
+  componentDidMount () {
+    let data = localStorage.getItem('recipes');
+    console.log(data);
+    if(data) {
+    this.setState({recipes: JSON.parse(data)})
+    }
   }
 
 

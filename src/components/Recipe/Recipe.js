@@ -62,14 +62,14 @@ const Recipe = (props) => {
             <div>
                 <Image src={props.image}/>
             </div>
-            <TextContainer>
-                <Title>{props.title.length < 25 ? props.title : props.title.substring(0,25) + '...' }</Title>
+            <TextContainer primary>
+                <Title primary>{props.title.length < 25 ? props.title : props.title.substring(0,25) + '...' }</Title>
                 <Text><Span>Publisher: </Span>{props.publisher}</Text>
                <Link to ={{
                    pathname: `/recipe/${props.id}`,
                    state: {title: props.title }
                  
-               }}> <Button>View recipe</Button> </Link>
+               }}> <Button primary>View recipe</Button> </Link>
             </TextContainer>
         
         </RecipeBox>
